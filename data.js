@@ -8,12 +8,12 @@ const client = new OBA ({
 });
 
 client.get('search',{
- q: 'e',
- facet: 'type(book)',
- sort: 'title',
+ q: 'Michael Jackson',
+//  facet: 'type(book)',
+ sort: 'year',
  refine: true,
  librarian: true,
- count: 40,
+ count: 100,
  log: true,
  filter: function (book) {
    return (book.titles
@@ -22,14 +22,17 @@ client.get('search',{
    && book.languages.language
    && book.publication
    && book.publication.year 
-   && book.publication.year.$t > '2010'
+   && book.publication.year.$t >= '2000' 
+  //  && book.genres
+  //  && book.genres.genre
 
  )},
  map: function (book) {
    return {
      title: book.titles.title.$t,
      taal: book.languages.language.$t,
-     jaartal: book.publication.year.$t
+     jaartal: book.publication.year.$t,
+    //  genre: book.genres.genre.length ? book.genres.genre.map(genre=> genre.$t) : [book.genres.genre.$t]
      // jaartal: book.publication.year.$t
    }
  }
