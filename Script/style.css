@@ -6,3 +6,11 @@ body{
 svg{
     background:#fafaFa;
 }
+.axis path,
+  .axis line {
+    stroke: #000;
+  }
+ 
+  .y .tick line {
+    stroke: #ddd;
+  }
