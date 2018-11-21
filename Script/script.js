@@ -54,17 +54,19 @@ d3.json("log.json").then(function(data){
 
 
 function mouseClick(d){ 
-    console.log(this.x)
+    console.log(this)
     let x = this
-    console.log(x.attr  )
     // console.log(d)
     let nestedTalen = []
     let talen = d.values.map(function(d){return d.taal})
-    let lan = d3.nest()
-    .key(function(d){return d})
-    .entries(talen)
-    console.log(lan) 
-    d3.select(this).remove()
+    let language = d3.nest()
+                     .key(function(d){return d})
+                     .entries(talen)
+
+  console.log(language) 
+     let currentRect = d3.select(this)
+     currentRect.data()
+    
     
 }
 
@@ -89,4 +91,97 @@ chartGroup.append('g')
     .attr('class', 'x axis')
     .attr('transform', `translate(0,${height})`)
     .call(xAsis)
+
+    
 })
+var svg = d3.select("svg"),
+    width = svg.attr("width"),
+    height = svg.attr("height"),
+    radius = Math.min(width, height) / 2,
+    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    function languagesCounter(data) {
+        return d3
+          .nest()
+          .key(function(d) {
+            return d.taal
+          })
+          .rollup(function(v) {
+            return v.length
+          })
+          .entries(data)
+      }
+    
+
+      const color = d3.scaleOrdinal(d3.schemeSet1)
+// Generate the pie
+var pie = d3.pie().value(function(d){
+    return d.percent
+})
+
+// Generate the arcs
+var arc = d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius);
+
+var svgPie = d3.select('.piechart'),
+widthPie = svgPie.attr('width'),
+heightPie = svgPie.attr('height'),
+radiusPie = Math.min(widthPie, heightPie) / 2
+
+
+var pie = d3.pie().value(function(d) {
+return d.percent
+})
+
+
+var label = d3
+.arc()
+.outerRadius(radiusPie)
+.innerRadius(radiusPie - 80)
+
+function countTotal(array) {
+    var total = 0
+    array.forEach(function(d) {
+      total = total + d.value
+    })
+    return total
+  }
+  d3.json("log.json").then(function(data){
+var pie_data = []
+var languagesCount = languagesCounter(data)
+//percentages for pie chart
+for (var a = 0; a < languagesCount.length; a++) {
+// simple logic to calculate percentage data for the pie
+pie_data[a] = {
+language: languagesCount[a].key,
+percent: (languagesCount[a].value / countTotal(languagesCount)) * 100
+}}
+
+// console.log(pie_data)
+//Generate groups
+var arcs = g
+            .selectAll("arc")
+            .data(pie(pie_data))
+            .enter()
+            .append("g")
+            .attr("class", "arc")       
+
+//Draw arc paths
+    arcs
+            .append("path")
+            .attr("fill", function(d) {
+                return color(d.data.language);
+            })
+            .attr("d", arc);
+
+            arcs
+            .append('text')
+            .attr('transform', function(d) {
+                return 'translate(' + label.centroid(d) + ')'
+              })
+            .text(function(d) {
+              return d.data.language
+            })
+})        
+
