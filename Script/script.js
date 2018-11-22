@@ -170,7 +170,7 @@ d3.json("https://raw.githubusercontent.com/remcopasma/frontend-data/master/Scrip
 
             }
             
-            d3.json("log.json").then(function(){
+            d3.json("https://raw.githubusercontent.com/remcopasma/frontend-data/master/Script/log.json").then(function(){
                 var pie_data = []
                 //procenten in de pie chart
                 for (var a = 0; a < newData.length; a++) {
