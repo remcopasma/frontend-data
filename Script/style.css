@@ -1,16 +1,23 @@
 body{
     height: 100vh;
     margin:0;
+    padding:1%;
 }
 
-svg{
-    background:#fafaFa;
-}
 .axis path,
   .axis line {
-    stroke: #000;
+    stroke: 000;
   }
  
   .y .tick line {
     stroke: #ddd;
   }
+  .piechart {
+    height: 100vh;
+    margin-left:2%;
+}
+
+.barchart{
+    height: 100vh;
+    margin-left:2%;
+}
