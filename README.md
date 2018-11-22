@@ -29,9 +29,8 @@ Dit vak is mij beter afgegaan dan functional programming. Ik kon al snel beginne
 
 # 6 | Schetsen
 Ik heb een aantal keer voor mezelf geschets wat ik met de data wilde en wat ik nodig heb om een visualisatie te maken.
-![Search](img/interaction2011.png)
-![Search](img/interaction2011.png)
-![Search](img/interaction2011.png)
+![Search](img/schets-1.jpg)
+![Search](img/schets-2.jpg)
 
 # 7 | Bronnen
 1. http://www.tutorialsteacher.com/d3js/create-pie-chart-using-d3js 
@@ -41,6 +40,6 @@ Ik heb een aantal keer voor mezelf geschets wat ik met de data wilde en wat ik n
 5. https://en.wikipedia.org/wiki/Michael_Jackson 
 
 # 8 | Credits   
-Joost Flick
-Loc Nguyen
+* Joost Flick
+* Loc Nguyen
 
