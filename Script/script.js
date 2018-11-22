@@ -1,4 +1,4 @@
-d3.json("log.json").then(function(data){
+d3.json("https://raw.githubusercontent.com/remcopasma/frontend-data/master/Script/log.json").then(function(data){
     // console.log(data)
     const svg = d3.select("body").append("svg").attr("width","860px").attr("height","100%").attr("class","barchart")
     const height = 500;
@@ -123,7 +123,7 @@ d3.json("log.json").then(function(data){
         console.log(newData)
 
 
-        const svg = d3.select("svg"),  // piechart
+        const svg = d3.select("svg"),  // piechart 
         width = svg.attr("width"),
         height = svg.attr("height"),
         radius = Math.min(width, height) / 2
