@@ -21,7 +21,7 @@ Ik heb besloten om te zoeken in de query op Michael Jackson en hier alles van op
 Op het moment dat je op een rect klikt in een bepaald jaar krijg je in een piechart de inhoud van de rect te zien. In de rect zitten de talen van de boeken van dat jaar, ik laat dit zien in percentages. Iedere keer als je een nieuwe rect aanklikt wordt de huidgie informatie getoond. Ik wilde weten of de boeken ook in andere talen zijn uitgegeven. De meeste boeken zijn engels en nederlands. Met een aantal franse boeken er af en toe tussen. In de afbeelding hieronder heb ik op 2011 geklikt en toont hij de talen in de piechart en het aantal van een taal in procenten. Bekijk mijn visualisatie hier https://remcopasma.github.io/frontend-data/
 
 
-![Search](img/interaction2011.png)
+![Search](img/Interaction2011.png)
 
 # 4 | Problemen
 Het grootste probleem waar ik de afgelopen 2 weken tegen aan ben gelopen was het laten zien van de talen door middel van een click. Ik wilde eerst dat als je klikte op een rect dat de rect stacked werd en je op die manier de talen te zien kreeg. Dit is mij uiteindelijk niet gelukt. Toen heb ik besloten om hier een Piechart van te maken. En na het volgen van een tutorial(http://www.tutorialsteacher.com/d3js/create-pie-chart-using-d3js), en wat hulp van Joost was dit mij wel gelukt. 
