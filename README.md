@@ -1,5 +1,6 @@
 # Oba
 ![Search](img/result.png)
+https://remcopasma.github.io/frontend-data/
 # Inhoud
 * 1 | Frontend Data
 * 2 | Concept
@@ -17,7 +18,7 @@ Ik ben begonnen met een express server op te zetten waar ik mijn visualisatie op
 Ik heb besloten om te zoeken in de query op Michael Jackson en hier alles van op te halen vanaf het jaar 2000. Ik heb hiervoor nodig het jaar van uitgave en de taal. Ik was benieuwd of je kon zien in een visualisatie wanneer Michael Jackson is overleden door de hoeveelheid in een bepaald jaar. Ik heb een barchart gemaak met op de X as het aantal jaar en op de Y as het aantal boeken. Zo hoopte ik dat je daadwerkelijk kon zien vanaf welk jaar het aantal omhoog gaat. Michael Jackson is overleden op 25 juni 2009. In de barchart is ook te zien dat vanaf 2009 het aantal flink omhoog is gegaan en dit tot 2015 vrij hoog is gebleven.
 
 # 3 | Interactie 
-Op het moment dat je op een rect klikt in een bepaald jaar krijg je in een piechart de inhoud van de rect te zien. In de rect zitten de talen van de boeken van dat jaar, ik laat dit zien in percentages. Iedere keer als je een nieuwe rect aanklikt wordt de huidgie informatie getoond. Ik wilde weten of de boeken ook in andere talen zijn uitgegeven. De meeste boeken zijn engels en nederlands. Met een aantal franse boeken er af en toe tussen. In de afbeelding hieronder heb ik op 2011 geklikt en toont hij de talen in de piechart en het aantal van een taal in procenten.
+Op het moment dat je op een rect klikt in een bepaald jaar krijg je in een piechart de inhoud van de rect te zien. In de rect zitten de talen van de boeken van dat jaar, ik laat dit zien in percentages. Iedere keer als je een nieuwe rect aanklikt wordt de huidgie informatie getoond. Ik wilde weten of de boeken ook in andere talen zijn uitgegeven. De meeste boeken zijn engels en nederlands. Met een aantal franse boeken er af en toe tussen. In de afbeelding hieronder heb ik op 2011 geklikt en toont hij de talen in de piechart en het aantal van een taal in procenten. Bekijk mijn visualisatie hier https://remcopasma.github.io/frontend-data/
 ![Search](img/interaction2011.png)
 
 # 4 | Problemen
