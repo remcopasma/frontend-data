@@ -19,6 +19,8 @@ Ik heb besloten om te zoeken in de query op Michael Jackson en hier alles van op
 
 # 3 | Interactie 
 Op het moment dat je op een rect klikt in een bepaald jaar krijg je in een piechart de inhoud van de rect te zien. In de rect zitten de talen van de boeken van dat jaar, ik laat dit zien in percentages. Iedere keer als je een nieuwe rect aanklikt wordt de huidgie informatie getoond. Ik wilde weten of de boeken ook in andere talen zijn uitgegeven. De meeste boeken zijn engels en nederlands. Met een aantal franse boeken er af en toe tussen. In de afbeelding hieronder heb ik op 2011 geklikt en toont hij de talen in de piechart en het aantal van een taal in procenten. Bekijk mijn visualisatie hier https://remcopasma.github.io/frontend-data/
+
+
 ![Search](img/interaction2011.png)
 
 # 4 | Problemen
