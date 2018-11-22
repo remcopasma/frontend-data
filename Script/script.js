@@ -13,14 +13,14 @@ d3.json("log.json").then(function(data){
     let chartGroup = svg.append("g").attr("transform",`translate(${margin.left},100)`)
    
     
-    let dataTaal = d3.nest()
-                        .key(function (d){return d.taal})
-                        .entries(data)
-                        // console.log(dataTaal)
+    // let dataTaal = d3.nest()
+    //                     .key(function (d){return d.taal})
+    //                     .entries(data)
+    //                     // console.log(dataTaal)
                     
-    let genres = d3.nest()
-                        .key(function(d){return d.genre})
-                        .entries(data)
+    // let genres = d3.nest()
+    //                     .key(function(d){return d.genre})
+    //                     .entries(data)
 
     let dataYear = d3.nest()
                         .key(function (d){return d.jaartal})
@@ -53,7 +53,6 @@ d3.json("log.json").then(function(data){
    // text label voor de X as
     svg.append("text")      
     .attr("transform", "translate(" + (width / 3) + " ," + (height + margin.bottom+110) + ")")
-   
     .text("Aantal Jaren")
     .attr('font-weight','bold')
     
@@ -70,7 +69,7 @@ d3.json("log.json").then(function(data){
         .data(reversedata)
         .enter().append("rect")
                     .attr("width", x.bandwidth()) // breedte van de rect
-                    .attr("height", function(d,i){return height- y(d.values.length);}) // hoogte van de rect. 
+                    .attr("height", function(d,i){return height- y(d.values.length);}) // hoogte van de rect. Credits loc
                     .attr("x", function(d){ return x(d.key)}) // x coordinaten van de rect
                     .attr("fill", function(d,i){return colors(d.values.length)}) // De rect wordt gevuld met kleuren volgens een kleurenschema
                     .attr("y", function(d,i){return y(d.values.length);}) // y coordinaten van de rect.
@@ -79,8 +78,8 @@ d3.json("log.json").then(function(data){
                     .on("mouseout", mouseOut)
                     .on("click", mouseClick);
 
-        function mouseMove()
-        {return tooltip.style("top", 
+    function mouseMove(){
+        return tooltip.style("top", 
         (event.pageY-10)+"px").style("left",
         (event.pageX+10)+"px");
     }
@@ -88,7 +87,7 @@ d3.json("log.json").then(function(data){
     function mouseOver(d){
         return tooltip
         .style("visibility", "visible")
-        .text(d.key + " = " + d.values.length + ' Boeken'),
+        .text(d.key + " = " + d.values.length + ' Boeken'), // credits loc
         d3.select(this).attr('opacity', '0.5')
         // console.log(d);
     }
@@ -106,7 +105,7 @@ d3.json("log.json").then(function(data){
 
     function mouseClick(d){ 
         // console.log(this)
-        let x = this
+        // let x = this
         // console.log(d)
         let talen = d.values.map(function(d){return d.taal})
         let language = d3.nest()
@@ -118,43 +117,26 @@ d3.json("log.json").then(function(data){
         currentRect.data()
         newData = []
         language.forEach(function(lang){
-            newData.push({language: lang.key, value: lang.values.length})
+            newData.push({language: lang.key, value: lang.values.length}) // credits joost
 
         })
         console.log(newData)
-    
 
 
-
-// PIECHARRDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
-
-
-        const svg = d3.select("svg"),
+        const svg = d3.select("svg"),  // piechart
         width = svg.attr("width"),
         height = svg.attr("height"),
         radius = Math.min(width, height) / 2
         const margin = {top: 50, bottom: 50, left: 250, right: 50}
         g = svg.append("g").attr("transform",`translate(${margin.left},350)`)
         
-        
-        function languagesCounter(data) {
-            return d3
-                .nest()
-                .key(function(d) {
-                return d.taal
-                })
-                .rollup(function(v) {
-                return v.length
-                })
-                .entries(data)
-            }
 
             svg.append('text') // Titel van de piechart
                 .attr('x',80)
                 .attr('y', 50)
                 .attr('font-size', '20px')
                 .attr('font-weight','bold')
-                .text('Percentage per taal in een bepaald jaar')
+                .text('Percentage per taal in het gekozen jaar')
             
             // Kleuren van de piechart
             const color = d3.scaleOrdinal(d3.schemeSet1)
@@ -164,10 +146,6 @@ d3.json("log.json").then(function(data){
                 return d.percent
             })
         
-            // Generate the arcs
-            var arc = d3.arc()
-                        .innerRadius(0)
-                        .outerRadius(radius);
         
             var svgPie = d3.select('.piechart'),
             widthPie = svgPie.attr('width'),
@@ -189,10 +167,10 @@ d3.json("log.json").then(function(data){
                 total = total + d.value
                 })
                 return total
+
             }
             
-        
-            d3.json("log.json").then(function(data){
+            d3.json("log.json").then(function(){
                 var pie_data = []
                 //procenten in de pie chart
                 for (var a = 0; a < newData.length; a++) {
@@ -200,7 +178,9 @@ d3.json("log.json").then(function(data){
                 pie_data[a] = {
                 language: newData[a].language,
                 percent: (newData[a].value / countTotal(newData)) * 100
-            }}
+                    
+            }      
+        }
             console.log(pie_data)
         
             var tooltip = d3
@@ -209,32 +189,40 @@ d3.json("log.json").then(function(data){
                 .style('position', 'absolute')
                 .style('z-index', '10')
                 .style('visibility', 'hidden')
-          
-          // Zorgt ervoor dat de tooltip bij het bewegen van de muis blijft
-          function mouseMove() {
+            
+            // Zorgt ervoor dat de tooltip bij het bewegen van de muis blijft
+            function mouseMove() {
                 return tooltip
                 .style('top', event.pageY - 20 + 'px')
                 .style('left', event.pageX + 20 + 'px')
-          }
-          
-         // Mousover
-          function onMouseOverPie(d) {
-                d3.select(this)
-                return tooltip     //label
+
+            }
+            
+            // Mousover
+            function onMouseOverPie(d) {
+            d3.select(this).attr('class', 'highlightPie')
+            .attr('fill', '#ffffff')
+            //label
+            return tooltip
                 .style('visibility', 'visible')
-                .text(d.data.language + ' = ' + Math.round(d.value) + '%'),
-                d3.select(this)
-                .attr('opacity', '0.5')
-                .attr('fill', '#ffffff')
-        }
+                .text(d.data.language + ' = ' + Math.round(d.value) + '%')
+                
+            }
+                
+        
             // zorgt ervoor dat de tooltip wegblijft als je er niet meer overheen gaat
             function onMouseOutPie(d) {
                 d3.select(this)
                 return tooltip.style('visibility', 'hidden'),
                 d3.select(this).attr('opacity', '1')
+                
             }
-          
-        
+            
+            // Generate the arcs
+            var arc = d3.arc()
+                        .innerRadius(0)
+                        .outerRadius(radius);
+           
             //Generate groups
             var arcs = g
                 .selectAll("arc")
@@ -256,7 +244,7 @@ d3.json("log.json").then(function(data){
             arcs
                 .append('text')
                 .attr('transform', function(d) {
-                    return 'translate(' + label.centroid(d) + ')'
+                    return 'translate(' + label.centroid(d) + ')' 
                 })
                 .text(function(d) {
                 return d.data.language
