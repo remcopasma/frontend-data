@@ -1,4 +1,4 @@
-d3.json("/script/log.json").then(function(data){
+d3.json("https://raw.githubusercontent.com/remcopasma/frontend-data/master/Script/log.json").then(function(data){
     // console.log(data)
     const svg = d3.select("body").append("svg").attr("width","860px").attr("height","100%").attr("class","barchart")
     const height = 500;
@@ -170,7 +170,7 @@ d3.json("/script/log.json").then(function(data){
 
             }
             
-            d3.json("/script/log.json").then(function(){
+            d3.json("https://raw.githubusercontent.com/remcopasma/frontend-data/master/Script/log.json").then(function(){
                 var pie_data = []
                 //procenten in de pie chart
                 for (var a = 0; a < newData.length; a++) {
